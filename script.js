@@ -10,7 +10,7 @@ var simon = {
         var i = 0;
         var pattern = setInterval(function () {
             lightColor(simon.pattern[i]);
-            audio(i);
+            audio(simon.pattern[i]);
             i++;
             if (i >= simon.pattern.length) {
                 clearInterval(pattern);
@@ -19,10 +19,10 @@ var simon = {
         return this;
     },
     audio: {
-        red: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
-        green: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
-        blue: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
-        yellow: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3')
+        red: new Audio('beep1.mp3'),
+        green: new Audio('beep2.mp3'),
+        blue: new Audio('beep3.mp3'),
+        yellow: new Audio('beep4.mp3')
     },
     enablePlayerInput: function () {
         $('.red').css("pointer-events", "auto");
@@ -57,11 +57,7 @@ function disablePlayerInput() {
 
 function checkInputPattern(input, index) {
 
-    console.log("in checkinputpattern");
-    /* for(var i=0;i<simon.step;++i)
-      {
-        
-     */
+
     if (input != simon.pattern[index]) {
 
         checkPassed = false;
@@ -70,7 +66,7 @@ function checkInputPattern(input, index) {
         checkPassed = true;
 
     }
-    //}
+
     if (!checkPassed) {
         $('.game-control').effect("highlight", {
             color: 'red'
@@ -110,7 +106,6 @@ function startGame() {
     $('.game-status').text("Simon Game")
     simon.step = 0;
     simon.pattern = [];
-    // alert("ds");
     playRound();
 
 }
